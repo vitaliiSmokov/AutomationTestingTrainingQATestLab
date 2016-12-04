@@ -26,7 +26,7 @@
                     <version>2.19.1</version>
                     <configuration>
                         <systemPropertyVariables>
-
+                            <driver.chrome>${project.basedir}${file.separator}src${file.separator}main${file.separator}resources${file.separator}chromedriver.exe</driver.chrome>
                         </systemPropertyVariables>
                     </configuration>
                 </plugin>
