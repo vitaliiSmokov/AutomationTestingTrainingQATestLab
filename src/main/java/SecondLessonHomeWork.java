@@ -14,10 +14,10 @@ public class SecondLessonHomeWork {
         WebElement searchBoxForm = driver.findElement(By.className("b_searchboxForm"));
         searchBoxForm.sendKeys("automation");
         driver.findElement(By.id("sb_form_go")).click();
-        System.out.println(driver.getTitle());
-        List <WebElement> searchResultTitles = driver.findElements(By.tagName("h2"));
+        System.out.println("Page title: " + driver.getTitle());
+        List <WebElement> searchResultTitles = driver.findElements(By.className("b_algo"));
         for (WebElement printResult:searchResultTitles){
-            System.out.println(printResult.getText());
+            System.out.println(printResult.findElement(By.tagName("h2")).getText());
         }
         driver.quit();
     }
