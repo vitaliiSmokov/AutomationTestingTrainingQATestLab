@@ -49,8 +49,8 @@ public class ThirdLessonHomeWork {
         driver.findElement(By.xpath(".//span[@class= 'ftrP12' and text() = 'Past month']")).click();
         By imagesLocator = By.xpath(".//div[@class='dg_u']");
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(imagesLocator));
+
 //6. Нажать на первое изображение из результатов поиска. Дождаться перехода в режим слайд шоу.
-//        List<WebElement> images = driver.findElements(By.className("dg_u"));
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.className("dg_u")));
         Actions mouse = new Actions(driver);
         By firstImageLocator = By.xpath(".//*[@id='dg_c']/div[1]/div/div[1]/div/a/img");

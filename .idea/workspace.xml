@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="20c8ebfc-b69d-4777-83fe-3d823fcf0258" name="Default" comment="Нажаk на первое изображение из результатов поиска.&#10; Пытаюсь переключиться на IFrame">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+    <list default="true" id="20c8ebfc-b69d-4777-83fe-3d823fcf0258" name="Default" comment="Нажал на первое изображение из результатов поиска.&#10; Пытаюсь переключиться на IFrame">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ThirdLessonHomeWork.java" afterPath="$PROJECT_DIR$/src/main/java/ThirdLessonHomeWork.java" />
     </list>
@@ -28,21 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ThirdLessonHomeWork.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ThirdLessonHomeWork.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ThirdLessonHomeWork.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="51" column="94" lean-forward="false" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="94" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="62" column="5" lean-forward="false" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
+            <state relative-caret-position="123">
+              <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -80,8 +69,8 @@
         <option value="$PROJECT_DIR$/src/main/java/SeleniumDemo.java" />
         <option value="$PROJECT_DIR$/src/main/java/ChromeDemo.java" />
         <option value="$PROJECT_DIR$/src/main/java/EdgeDemo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ThirdLessonHomeWork.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/main/java/ThirdLessonHomeWork.java" />
       </list>
     </option>
   </component>
@@ -529,7 +518,14 @@
       <option name="project" value="LOCAL" />
       <updated>1481754596635</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Нажал на первое изображение из результатов поиска.&#10; Пытаюсь переключиться на IFrame">
+      <created>1481843450615</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1481843450615</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -600,7 +596,8 @@
     <MESSAGE value="Добавлено ожидание результатов поиска" />
     <MESSAGE value="Добавлено частичное решение 3-го дом задания" />
     <MESSAGE value="Нажаk на первое изображение из результатов поиска.&#10; Пытаюсь переключиться на IFrame" />
-    <option name="LAST_COMMIT_MESSAGE" value="Нажаk на первое изображение из результатов поиска.&#10; Пытаюсь переключиться на IFrame" />
+    <MESSAGE value="Нажал на первое изображение из результатов поиска.&#10; Пытаюсь переключиться на IFrame" />
+    <option name="LAST_COMMIT_MESSAGE" value="Нажал на первое изображение из результатов поиска.&#10; Пытаюсь переключиться на IFrame" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -899,18 +896,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ThirdLessonHomeWork.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="51" column="94" lean-forward="false" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="94" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="257">
           <caret line="62" column="5" lean-forward="false" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ThirdLessonHomeWork.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
           <folding />
         </state>
       </provider>
