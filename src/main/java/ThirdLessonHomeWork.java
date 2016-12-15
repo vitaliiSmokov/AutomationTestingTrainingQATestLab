@@ -50,10 +50,15 @@ public class ThirdLessonHomeWork {
         By imagesLocator = By.xpath(".//div[@class='dg_u']");
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(imagesLocator));
 //6. Нажать на первое изображение из результатов поиска. Дождаться перехода в режим слайд шоу.
-        List<WebElement> images = driver.findElements(By.className("dg_u"));
+//        List<WebElement> images = driver.findElements(By.className("dg_u"));
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.className("dg_u")));
-        images.get(0).click();
+        Actions mouse = new Actions(driver);
+        By firstImageLocator = By.xpath(".//*[@id='dg_c']/div[1]/div/div[1]/div/a/img");
+        mouse.moveToElement(driver.findElement(firstImageLocator)).build().perform();
+        driver.findElement(firstImageLocator).click();
 
+        driver.switchTo().frame("frame#OverlaylFrame.insightsOverlay");
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("detail_film")));
 
         driver.quit();
     }
