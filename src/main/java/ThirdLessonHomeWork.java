@@ -11,6 +11,7 @@ public class ThirdLessonHomeWork {
 
         WebDriver driver = new FirefoxDriver();
         WebDriverWait wait = new WebDriverWait(driver, 10);
+        driver.manage().window().maximize();
 //1. Открыть главную страницу поисковой системы Bing.
         driver.navigate().to("http://www.bing.com");
 //2. Перейти в раздел поиска изображений. Дождаться, что заголовок страницы имеет название “Лента изображений Bing.”
@@ -48,15 +49,28 @@ public class ThirdLessonHomeWork {
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(automationsImagesLocator));
 
 //6. Нажать на первое изображение из результатов поиска. Дождаться перехода в режим слайд шоу.
-        Actions mouse = new Actions(driver);
+//        Actions mouse = new Actions(driver);
         By firstImageLocator = By.xpath(".//*[@id='dg_c']/div[1]/div/div[1]/div/a/img");
-        mouse.moveToElement(driver.findElement(firstImageLocator)).build().perform();
+//        mouse.moveToElement(driver.findElement(firstImageLocator)).build().perform();
         driver.findElement(firstImageLocator).click();
 
-        driver.switchTo().frame("OverlayIFrame");
+        String iFrameId = "OverlayIFrame";
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id(iFrameId)));
+        driver.switchTo().frame(iFrameId);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.id("detail_film")));
-//        7. Выполнить переключение на следующее, предыдущее изображение. После переключения между изображениями необходимо дожидаться обновления очереди изображений для показа в нижней части окна слайд шоу.
-//        8. Нажать на отображаемое изображение в режиме слайд шоу и удостовериться, что картинка загрузилась в отдельной вкладке/окне.
+
+//7. Выполнить переключение на следующее, предыдущее изображение. После переключения между изображениями необходимо дожидаться обновления очереди изображений для показа в нижней части окна слайд шоу.
+        WebElement nextImage = driver.findElement(By.id("iol_navr"));
+        WebElement previousImage = driver.findElement(By.id("iol_navl"));
+        nextImage.click();
+        previousImage.click();
+
+
+//8. Нажать на отображаемое изображение в режиме слайд шоу и удостовериться, что картинка загрузилась в отдельной вкладке/окне.
+
+
+
+
 
         driver.quit();
     }
