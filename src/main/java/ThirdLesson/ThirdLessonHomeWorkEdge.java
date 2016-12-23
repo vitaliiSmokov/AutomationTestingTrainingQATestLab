@@ -1,15 +1,22 @@
-import org.openqa.selenium.*;
+package ThirdLesson;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-public class ThirdLessonHomeWork {
+public class ThirdLessonHomeWorkEdge {
     public static void main(String[] args) {
+        String pathToEdgeDriver = System.getProperty("user.dir") + "/src/main/resources/Drivers/MicrosoftWebDriver.exe";
+        System.setProperty("webdriver.edge.driver", pathToEdgeDriver);
 
-        WebDriver driver = new FirefoxDriver();
+        WebDriver driver = new EdgeDriver();
         WebDriverWait wait = new WebDriverWait(driver, 10);
         driver.manage().window().maximize();
 //1. Открыть главную страницу поисковой системы Bing.
@@ -25,10 +32,10 @@ public class ThirdLessonHomeWork {
         By locatorOfImages = By.xpath(".//div[@class ='iuscp varh']");
         List<WebElement> imageElementsBeforeScroll = driver.findElements(locatorOfImages);
         JavascriptExecutor javaScript = (JavascriptExecutor) driver;
-        javaScript.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+        scrollTo(javaScript, "window.scrollTo(0, document.body.scrollHeight)");
         List<WebElement> imageElementsAfterScroll = driver.findElements(locatorOfImages);
         verifyScrolling(imageElementsBeforeScroll, imageElementsAfterScroll);
-        javaScript.executeScript("window.scrollTo(0, 0)");
+        scrollTo(javaScript, "window.scrollTo(0, 0)");
 
 //4. В поисковую строку ввести слово без последней буквы (например “automatio” вместо “automation”).
         By searchBoxFormLocator = By.cssSelector(".b_searchboxForm>input#sb_form_q");
@@ -50,14 +57,16 @@ public class ThirdLessonHomeWork {
 
 //6. Нажать на первое изображение из результатов поиска. Дождаться перехода в режим слайд шоу.
 //        Actions mouse = new Actions(driver);
-        By firstImageLocator = By.xpath(".//*[@id='dg_c']/div[1]/div/div[1]/div/a/img");
+        By firstImageLocator = By.xpath(".//*[@id='dg_c']/div[1]/div/div[1]/div/a");
 //        mouse.moveToElement(driver.findElement(firstImageLocator)).build().perform();
+        wait.until(ExpectedConditions.elementToBeClickable(firstImageLocator));
         driver.findElement(firstImageLocator).click();
 
         String iFrameId = "OverlayIFrame";
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id(iFrameId)));
-        driver.switchTo().frame(iFrameId);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("detail_film")));
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.id(iFrameId)));
+        WebElement frame = driver.findElement(By.id(iFrameId));
+        driver.switchTo().frame(frame);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("iol_navr")));
 
 //7. Выполнить переключение на следующее, предыдущее изображение. После переключения между изображениями необходимо дожидаться обновления очереди изображений для показа в нижней части окна слайд шоу.
         WebElement nextImage = driver.findElement(By.id("iol_navr"));
@@ -73,6 +82,10 @@ public class ThirdLessonHomeWork {
 
 
         driver.quit();
+    }
+
+    private static void scrollTo(JavascriptExecutor javaScript, String script) {
+        javaScript.executeScript(script);
     }
 
     private static void goToImageSearch(WebDriver driver, WebDriverWait wait) {
