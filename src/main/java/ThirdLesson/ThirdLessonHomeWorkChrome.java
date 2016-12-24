@@ -6,11 +6,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.EOFException;
 import java.util.List;
+import java.util.Set;
 
 public class ThirdLessonHomeWorkChrome {
     public static void main(String[] args) {
@@ -68,22 +70,40 @@ public class ThirdLessonHomeWorkChrome {
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.id(iFrameId)));
         WebElement frame = driver.findElement(By.id(iFrameId));
         driver.switchTo().frame(frame);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("iol_navr")));
+        By mainImageLocator = By.xpath("//img[@class='mainImage accessible nofocus']");
+        wait.until(ExpectedConditions.presenceOfElementLocated(mainImageLocator));
 
-//7. Выполнить переключение на следующее, предыдущее изображение. После переключения между изображениями необходимо дожидаться обновления очереди изображений для показа в нижней части окна слайд шоу.
+//7. Выполнить переключение на следующее, предыдущее изображение.
+// После переключения между изображениями необходимо дожидаться обновления очереди изображений для показа в нижней части окна слайд шоу.
         WebElement nextImage = driver.findElement(By.id("iol_navr"));
         WebElement previousImage = driver.findElement(By.id("iol_navl"));
+        List<WebElement> detailFilm = driver.findElements(By.xpath("//a[@class='iol_fst']"));
         nextImage.click();
+        //verify queue of the images
+        wait.until(ExpectedConditions.visibilityOf(detailFilm.get(7)));
         previousImage.click();
-
-
 //8. Нажать на отображаемое изображение в режиме слайд шоу и удостовериться, что картинка загрузилась в отдельной вкладке/окне.
-
-
-
-
+        WebElement mainImage = driver.findElement(mainImageLocator);
+        String parentHandle = driver.getWindowHandle();
+        final Set<String> oldWindowHandles = driver.getWindowHandles();
+        mainImage.click();
+        String newWindowHandle = getNewWindowHandle(driver, oldWindowHandles);
+        driver.switchTo().window(newWindowHandle);
+        if (driver.findElement(By.tagName("img")).isDisplayed())
+            System.out.println("Image is present in new tab");
+        driver.switchTo().window(parentHandle);
 
         driver.quit();
+    }
+
+    private static String getNewWindowHandle(WebDriver driver, final Set<String> oldWindowHandles) {
+        return (new WebDriverWait(driver, 10)).until(new ExpectedCondition<String>() {
+                public String apply(WebDriver webDriver) {
+                    Set<String> newWindowHandles = webDriver.getWindowHandles();
+                    newWindowHandles.removeAll(oldWindowHandles);
+                    return newWindowHandles.iterator().next();
+                }
+            });
     }
 
     private static void scrollTo(JavascriptExecutor javaScript, String script) {
